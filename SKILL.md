@@ -29,6 +29,7 @@ Follow this 9-step process for any new table:
 
 | Skill | Purpose |
 |-------|---------|
+| **object-reference** | Every VPX object type: events, properties, methods, usage examples |
 | **conventions** | Naming, layers, timers, performance, standalone compatibility |
 | **nfozzy-physics** | Flipper tuning by era, rubber separation, targets, materials |
 | **game-logic** | Modes, multiball, scoring, ball locks, tilt, attract, wizard mode |
