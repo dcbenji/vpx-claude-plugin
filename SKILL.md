@@ -30,6 +30,7 @@ Follow this 9-step process for any new table:
 | Skill | Purpose |
 |-------|---------|
 | **object-reference** | Every VPX object type: events, properties, methods, usage examples |
+| **glf** | Game Logic Framework for original tables: modes, shots, multiball, scoring, events |
 | **conventions** | Naming, layers, timers, performance, standalone compatibility |
 | **nfozzy-physics** | Flipper tuning by era, rubber separation, targets, materials |
 | **game-logic** | Modes, multiball, scoring, ball locks, tilt, attract, wizard mode |
@@ -68,10 +69,11 @@ Set these BEFORE any other work. Wrong values invalidate all subsequent tuning.
 4. **lighting** — GI dimming via ROM, flasher decay, insert maps
 
 **Original (non-ROM):** Prioritize in this order:
-1. **game-logic** — Design modes, multiball, scoring from scratch. Use FlexMode state machine
-2. **lighting** — Light State Controller for insert management, FlexDMD for display
+1. **glf** — Game Logic Framework for modes, multiball, scoring, shots (recommended for new originals)
+2. **game-logic** — Alternative: hand-coded state machines if GLF is not used
 3. **nfozzy-physics** — Pick an era feel, tune flippers and rubbers
-4. **sound** — Fleep setup, custom sound design
+4. **lighting** — Light State Controller for insert management, FlexDMD for display
+5. **sound** — Fleep setup, custom sound design
 
 ## Quick Start — New Original Table from Scratch
 
