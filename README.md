@@ -27,6 +27,7 @@ When you're working on a VPX table and ask Claude for help, the relevant skill(s
 | **lighting** | GI strings, flasher decay, inserts, Light State Controller |
 | **sound** | Fleep setup, ball rolling, ramp transitions, SSF |
 | **toys-mechs** | Diverters, magnets, VUKs, spinners, drop targets, motors |
+| **table-format** | Extracted VPX JSON format: read/edit game objects, materials, collections, scripts directly |
 | **troubleshooting** | 28+ symptom-to-fix patterns for common VPX issues |
 
 ## Installation

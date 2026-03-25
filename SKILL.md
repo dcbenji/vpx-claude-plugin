@@ -40,6 +40,7 @@ Follow this 9-step process for any new table:
 | **lighting** | GI strings, flasher decay, inserts, Light State Controller |
 | **sound** | Fleep setup, ball rolling, ramp transitions, SSF |
 | **toys-mechs** | Diverters, magnets, VUKs, spinners, drop targets, motors |
+| **table-format** | Extracted VPX JSON format: read/edit game objects, materials, collections, scripts directly |
 | **troubleshooting** | 28+ symptom-to-fix patterns for common VPX issues |
 
 ## Critical Globals
