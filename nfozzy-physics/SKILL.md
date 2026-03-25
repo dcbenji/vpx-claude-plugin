@@ -10,19 +10,36 @@ last_updated: "2026-03-24"
 ## When This Skill Applies
 Use when configuring flipper physics, rubber separation, target bounce, slingshot correction, or any physics material tuning on a VPX table. Also applies when diagnosing flipper feel, ball behavior, or physics-related bugs.
 
-## Where to Get the Code
+## Complete nFozzy Reference Data
 
-All nFozzy code comes from the **VPW Example Table**:
+**`nfozzy-reference.md`** in this skill folder contains the authoritative physics data:
+- All flipper constants by era (EM through Modern) with exact values
+- FlipperTricks FSM (states 0-3, transitions, timer setup)
+- FlipperCorrection polarity curves for all 4 eras (exact AddPt arrays)
+- Velocity curve (universal across all eras)
+- Ycoef safety points
+- LiveCatch implementation (full VBScript)
+- LinearEnvelope interpolation function (full VBScript)
+- Rubber COR curves (RubbersD, SleevesD, FlippersD) with updated 2025 values
+- Complete material presets table (16 materials)
+- Drop target constants and brick detection
+- Flipper geometry (trigger sizing, endpoint primitives)
+- Slingshot and bumper settings
+
+**Load `nfozzy-reference.md` when generating nFozzy code or tuning physics values.**
+
+## Where to Get the Paste-Ready Code
+
+The VBScript code that implements the above (CorTracker class, FlipperPolarity class, FlipperTricks timer, Fleep sound collections) comes from the **VPW Example Table**:
 - **Download:** VPUniverse (search "VPW Example Table")
-- **Extracted source:** `github.com/francisdb/vpw-example-table-extracted` — use vpxtool to extract, or read the script directly from the repo
-- **What to copy:** The entire nFozzy physics section as one block (CorTracker class, polarity curves, velocity curves, FlipperTricks, CheckLiveCatch, trajectory correction). Paste before your game code.
+- **Extracted source:** `github.com/francisdb/vpw-example-table-extracted`
+- **What to copy:** The entire nFozzy physics section as one block. Paste before your game code.
 
 **Fleep mechanical sounds** (separate from nFozzy but typically added together):
 - **Sound functions VBS:** Dropbox link in VPW Discord (Fleep Sound Functions updated)
 - **Sound samples by era:** Dropbox link in VPW Discord (Fleep Sounds folder)
-- **Tutorial:** "Adding Fleep Sound Package" by rothbauerw
 
-**v1.7+ "Basic" Example Table:** A stripped-down variant with just nFozzy + Fleep + generic layout — proper starting point for new tables (the full Example Table is too complex for beginners).
+**v1.7+ "Basic" Example Table:** Stripped-down variant with just nFozzy + Fleep + generic layout — proper starting point for new tables.
 
 ## 9-Step Implementation Checklist
 
