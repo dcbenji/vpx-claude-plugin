@@ -31,6 +31,7 @@ Follow this 9-step process for any new table:
 |-------|---------|
 | **object-reference** | Every VPX object type: events, properties, methods, usage examples |
 | **glf** | Game Logic Framework for original tables: modes, shots, multiball, scoring, events |
+| **core-vbs** | core.vbs API: cvpmTrough, cvpmSaucer, cvpmDropTarget, cvpmMagnet, cvpmMech, SolCallback |
 | **conventions** | Naming, layers, timers, performance, standalone compatibility |
 | **nfozzy-physics** | Flipper tuning by era, rubber separation, targets, materials |
 | **game-logic** | Modes, multiball, scoring, ball locks, tilt, attract, wizard mode |

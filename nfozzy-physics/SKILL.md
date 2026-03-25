@@ -10,6 +10,20 @@ last_updated: "2026-03-24"
 ## When This Skill Applies
 Use when configuring flipper physics, rubber separation, target bounce, slingshot correction, or any physics material tuning on a VPX table. Also applies when diagnosing flipper feel, ball behavior, or physics-related bugs.
 
+## Where to Get the Code
+
+All nFozzy code comes from the **VPW Example Table**:
+- **Download:** VPUniverse (search "VPW Example Table")
+- **Extracted source:** `github.com/francisdb/vpw-example-table-extracted` — use vpxtool to extract, or read the script directly from the repo
+- **What to copy:** The entire nFozzy physics section as one block (CorTracker class, polarity curves, velocity curves, FlipperTricks, CheckLiveCatch, trajectory correction). Paste before your game code.
+
+**Fleep mechanical sounds** (separate from nFozzy but typically added together):
+- **Sound functions VBS:** Dropbox link in VPW Discord (Fleep Sound Functions updated)
+- **Sound samples by era:** Dropbox link in VPW Discord (Fleep Sounds folder)
+- **Tutorial:** "Adding Fleep Sound Package" by rothbauerw
+
+**v1.7+ "Basic" Example Table:** A stripped-down variant with just nFozzy + Fleep + generic layout — proper starting point for new tables (the full Example Table is too complex for beginners).
+
 ## 9-Step Implementation Checklist
 
 1. **Make flipper meshes** -- visual flipper primitives matching era dimensions
