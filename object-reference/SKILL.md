@@ -85,7 +85,7 @@ Sub Bumper1_Hit()
 End Sub
 ```
 
-**Key properties:** `Force` (kick strength, 13-15 typical), `Threshold` (minimum hit force to trigger), `Radius` (MUST match rubber skirt, not cap — see troubleshooting #10)
+**Key properties:** `Force` (kick strength, 9.5-10.5 for nFozzy tables; default VPX is higher), `Threshold` (minimum hit force, 1.6-2.0), `Radius` (MUST match rubber skirt, not cap — see troubleshooting #10)
 
 ---
 

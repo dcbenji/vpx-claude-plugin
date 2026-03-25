@@ -94,7 +94,7 @@ These formulas produce the same values at standard flipper strengths but scale c
 | Era | Strength Range |
 |-----|---------------|
 | EM | 500 - 1000 |
-| Late 70s - Mid 80s | 1400 - 1600 |
+| Late 70s - Early 80s | 1400 - 1600 |
 | Mid 80s - Early 90s | 2000 - 2600 |
 | Mid 90s+ | 3200 - 3300 |
 
@@ -108,7 +108,7 @@ Const SOSRampup = 2.5         ' start-of-stroke rampup
 Const LiveCatch = 16          ' millisecond window
 Const LiveElasticity = 0.45   ' elasticity during catch
 Const SOSEM = 0.815           ' start-of-stroke elasticity multiplier
-Const EOSReturn = 0.025       ' return strength (mid-90s+)
+Const EOSReturn = 0.018       ' return strength (mid-90s+) [UPDATED - VPW wiki 2025]
 Const LiveDistanceMin = 30    ' VP units from flipper base
 Const LiveDistanceMax = 114   ' VP units (tip protection)
 ```
@@ -563,7 +563,7 @@ Impact must be within 8 VP units of target center for brick check.
 ### Trigger Setup
 
 - Triggers should surround flipper shape from start angle to end angle
-- Trigger must be exactly **23 VP units** larger than the flipper objects (no larger, no smaller)
+- Trigger must be exactly **27 VP units** larger than the flipper objects (2024 standard, supersedes original 23 — old margin was less than ball radius)
 - Hit height of triggers: **150 VP units**
 
 ### Endpoint Primitive

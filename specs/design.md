@@ -28,8 +28,13 @@ _Requirements: 1.1-1.5_
 ```
 ~/.claude/skills/vpx-dev/
 ├── SKILL.md                    — Master: workflow overview, skill index, routing
+├── object-reference/SKILL.md   — VPX object types: events, properties, methods
+├── glf/SKILL.md                — Game Logic Framework for original tables
+├── core-vbs/SKILL.md           — core.vbs API: cvpmTrough, cvpmSaucer, etc.
+├── flexdmd/SKILL.md            — FlexDMD display system: scenes, labels, animations
 ├── game-logic/SKILL.md         — Modes, multiball, scoring, ball locks, tilt, attract
 ├── nfozzy-physics/SKILL.md     — Rubber separation, flipper tuning, targets, materials
+│   └── nfozzy-reference.md     — Complete nFozzy physics data (curves, constants)
 ├── pinmame-wiring/SKILL.md     — ROM switches, coils, lamps, SolCallback, FastFlips
 ├── lighting/SKILL.md           — GI, flashers, inserts, Light State Controller
 ├── conventions/SKILL.md        — Naming, layers, timers, performance, standalone compat
@@ -45,8 +50,12 @@ Each skill's `description` field must contain keywords broad enough to match nat
 | Skill | Description Keywords |
 |-------|---------------------|
 | **Master** | `VPX VBScript pinball table development scripting game rules physics lighting sound ROM PinMAME` |
+| **object-reference** | `VPX object event property method Hit Unhit Spin Timer Slingshot Collide Dropped Raised trigger kicker gate spinner flipper bumper` |
+| **glf** | `VPX GLF Game Logic Framework original table mode shot multiball scoring event trough ball device counter timer` |
+| **core-vbs** | `VPX core.vbs cvpmTrough cvpmSaucer cvpmDropTarget cvpmMagnet cvpmMech SolCallback framework class` |
+| **flexdmd** | `VPX FlexDMD DMD LCD display scene label font image video animation action score scoreboard segment UltraDMD` |
 | **game-logic** | `VPX VBScript pinball game rules modes multiball scoring ball lock ball save tilt attract wizard mode state machine FlexDMD drain` |
-| **nfozzy-physics** | `VPX VBScript pinball physics nFozzy flipper rubber bumper slingshot target elasticity friction material tuning cradle` |
+| **nfozzy-physics** | `VPX VBScript pinball physics nFozzy flipper rubber bumper slingshot target elasticity friction material tuning cradle polarity velocity curve trigger separation` |
 | **pinmame-wiring** | `VPX VBScript pinball ROM PinMAME switch coil lamp solenoid SolCallback trough drain FastFlips wiring GI` |
 | **lighting** | `VPX VBScript pinball light GI flasher insert lamp fade lighting BlendDisableLighting Lampz Light State Controller` |
 | **conventions** | `VPX VBScript pinball conventions naming layers timer performance optimization standalone compatibility` |
@@ -176,12 +185,13 @@ _Requirements: 2.1-2.10_
 1. **Implementation Checklist** — 9 steps (flipper meshes → rdampen → key subs → fire code → nFozzy chunk → check duplicates → rubbers → import .vpp → test)
 2. **Flipper Tuning by Era** — polarity/velocity curves, strength values, EOS constants
 
-   | Era | Strength | SOSRampup | EOSTorque | EOSReturn |
-   |-----|----------|-----------|-----------|-----------|
-   | 70s | 2300 | 2.5 | 0.275 | 0.35 |
-   | 80s | 2500 | 2.5 | 0.275 | 0.35 |
-   | 90s WPC | 2800-3000 | 2.5 | 0.275 | 0.35 |
-   | Modern Stern | 3000-3500 | 2.5 | 0.375 | 0.4 |
+   | Era | Strength | SOSRampup | EOSTorque | ReturnStrength |
+   |-----|----------|-----------|-----------|----------------|
+   | EM | 500-1000 | 2.5 | 0.3 | 0.048 |
+   | Late 70s - Early 80s | 1400-1600 | 2.5 | 0.3 | 0.045 |
+   | Mid 80s (System 11) | 2000-2600 | 2.5 | 0.275 | 0.045 |
+   | Late 80s - Early 90s | 2000-2600 | 2.5 | 0.275 | 0.035 |
+   | Mid 90s+ (WPC/Stern) | 3200-3300 | 2.5 | 0.3 | 0.018 |
 
 3. **Flipper Trigger Sizing** — 27 VP margin (2024 standard), +3° end angle for sizing, hit height 150, PolarityCorrect in drain_hit
 4. **Upper Flipper Simplification** — disable trajectory correction, keep flipper tricks
@@ -440,17 +450,21 @@ _Requirements: NFR Maintenance_
 | Skill | Estimated Tokens | Sections |
 |-------|-----------------|----------|
 | Master (SKILL.md) | ~3,500 | Workflow, index, globals, routing |
+| object-reference | ~4,000 | All VPX object types, events, properties |
+| glf | ~4,500 | GLF framework: devices, events, modes, shots |
+| core-vbs | ~3,500 | core.vbs API classes and patterns |
+| flexdmd | ~5,000 | FlexDMD display, scenes, animations |
 | game-logic | ~5,000 | 8 patterns + quick ref |
-| nfozzy-physics | ~6,000 | 9 sections + era tables |
+| nfozzy-physics | ~6,000 | 9 sections + era tables + reference data |
 | pinmame-wiring | ~4,000 | 10 sections |
 | lighting | ~4,000 | 7 sections + anti-patterns |
 | conventions | ~6,000 | 9 sections + 19 ACs + checklists |
 | sound | ~2,500 | 7 sections |
 | troubleshooting | ~5,500 | 28+ symptom entries |
 | toys-mechs | ~3,000 | 8 mechanism patterns |
-| **Total** | **~39,500** | |
+| **Total** | **~56,500** | |
 
-At ~39.5k tokens total, if all skills loaded simultaneously they'd use ~4% of a 1M context window. In practice, only 2-3 skills load per query (~8-15k tokens, <1.5%).
+At ~56.5k tokens total, if all skills loaded simultaneously they'd use ~5.6% of a 1M context window. In practice, only 2-3 skills load per query (~8-15k tokens, <1.5%).
 
 ---
 

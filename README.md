@@ -16,6 +16,10 @@ When you're working on a VPX table and ask Claude for help, the relevant skill(s
 | Skill | Purpose |
 |-------|---------|
 | **Master** | Build workflow, quick start template, skill routing |
+| **object-reference** | Every VPX object type: events, properties, methods, usage examples |
+| **glf** | Game Logic Framework for original tables: modes, shots, multiball, scoring, events |
+| **core-vbs** | core.vbs API: cvpmTrough, cvpmSaucer, cvpmDropTarget, cvpmMagnet, cvpmMech, SolCallback |
+| **flexdmd** | FlexDMD display system: scenes, labels, fonts, images, videos, animations, scoreboards |
 | **conventions** | Naming, layers, timers, performance, standalone compatibility |
 | **nfozzy-physics** | Flipper tuning by era, rubber separation, targets, materials |
 | **game-logic** | Modes, multiball, scoring, ball locks, tilt, attract, wizard mode |

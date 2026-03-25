@@ -88,7 +88,8 @@ BallMass = 1
 Difficulty = 56
 Playfield Friction = 0.2
 Playfield Elasticity = 0.25
-Playfield Scatter = 2
+Playfield Scatter = 0
+Default Element Scatter = 2
 ```
 
 ### Step 2: Required VPX Objects on the Table
@@ -112,7 +113,7 @@ Const cSingleRFlip = 0   ' Required by system VBS
 ' ============ GAME VARIABLES ============
 Dim Score : Score = 0
 Dim BallsRemaining : BallsRemaining = 3
-Dim gBOT : gBOT = Array()    ' Global ball tracking (never destroy balls)
+Dim gBOT : ReDim gBOT(2)     ' Global ball tracking (never destroy balls)
 
 ' ============ TABLE INIT ============
 Sub Table1_Init
@@ -120,10 +121,9 @@ Sub Table1_Init
     Table1.Difficulty = 56
 
     ' Create balls in trough (physical trough — never destroy)
-    Dim i
-    For i = 0 To 2
-        Set gBOT(i) = Trough(i).CreateSizedBallWithMass(BallSize, 1)
-    Next
+    Set gBOT(0) = Trough1.CreateSizedBallWithMass(BallSize, 1)
+    Set gBOT(1) = Trough2.CreateSizedBallWithMass(BallSize, 1)
+    Set gBOT(2) = Trough3.CreateSizedBallWithMass(BallSize, 1)
 
     ' Preload MP3 sounds to prevent first-play stutter
     PlaySound "music_main", 0, 0.001

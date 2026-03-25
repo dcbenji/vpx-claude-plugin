@@ -345,11 +345,11 @@ Dim af : Set af = titleLabel.ActionFactory
 Dim seq : Set seq = af.Sequence()
 seq.Add af.Show(True)
 Dim moveIn : Set moveIn = af.MoveTo(64, 16, 0.3)
-moveIn.Ease = 22    ' SineOut
+moveIn.Ease = 17    ' SineOut
 seq.Add moveIn
 seq.Add af.Wait(2.0)
 Dim moveOut : Set moveOut = af.MoveTo(64, -20, 0.3)
-moveOut.Ease = 21    ' SineIn
+moveOut.Ease = 16    ' SineIn
 seq.Add moveOut
 seq.Add af.Show(False)
 titleLabel.AddAction seq
@@ -455,11 +455,11 @@ Sub ShowModeCallout(modeName, duration)
     Dim af : Set af = lbl.ActionFactory
     Dim seq : Set seq = af.Sequence()
     Dim moveIn : Set moveIn = af.MoveTo(64, 16, 0.3)
-    moveIn.Ease = 22    ' SineOut
+    moveIn.Ease = 17    ' SineOut
     seq.Add moveIn
     seq.Add af.Wait(duration)
     Dim moveOut : Set moveOut = af.MoveTo(64, -10, 0.3)
-    moveOut.Ease = 21    ' SineIn
+    moveOut.Ease = 16    ' SineIn
     seq.Add moveOut
     lbl.AddAction seq
 

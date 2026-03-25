@@ -128,7 +128,8 @@ Use `gBOT` (global ball array) for all gameplay code. **Exception:** `Cor.Update
 ```vbs
 ' In Cor.Update — ALWAYS use GetBalls here:
 Sub GameTimer_Timer()
-    Cor.Update    ' Internally uses GetBalls — safe
+    Dim BOT: BOT = GetBalls
+    Cor.Update BOT
 End Sub
 
 ' Everywhere else — use gBOT:

@@ -55,17 +55,17 @@ The VBScript code that implements the above (CorTracker class, FlipperPolarity c
 
 ## Flipper Tuning by Era
 
-| Era | Strength | SOSRampup | EOSTorque | EOSReturn | Notes |
-|-----|----------|-----------|-----------|-----------|-------|
-| System 11 (mid-80s) | 2300-2600 | 2.5 | 0.275 | 0.35 | Weaker solenoids |
-| Early WPC (1991) | 2400 | 2.5 | 0.275 | 0.35 | Red coil FL-11630 |
-| Mid WPC (1992+) | 2600 | 2.5 | 0.275 | 0.35 | Blue coil FL-11629 |
-| Late WPC / strong coil | 2800-3500 | 2.5 | 0.375 | 0.4 | Indy, No Fear |
-| Modern Stern | 3000-3500 | 2.5 | 0.375 | 0.4 | Higher EOS values |
+| Era | Strength | SOSRampup | EOSTorque | ReturnStrength | Notes |
+|-----|----------|-----------|-----------|----------------|-------|
+| EM | 500-1000 | 2.5 | 0.3 | 0.048 | Weak coils |
+| Late 70s - Early 80s | 1400-1600 | 2.5 | 0.3 | 0.045 | |
+| Mid 80s (System 11) | 2000-2600 | 2.5 | 0.275 | 0.045 | |
+| Late 80s - Early 90s | 2000-2600 | 2.5 | 0.275 | 0.035 | |
+| Mid 90s+ (WPC/Stern) | 3200-3300 | 2.5 | 0.3 | 0.018 | Strongest coils |
 
-- EOSTorque 0.375 + EOSReturn 0.4 together improve flipper trick realism (tap pass, flick pass)
+- For non-standard flipper strengths, use formulas: `EOSTNew = Strength * (-0.00025) + 1.57`, `EOSReturn = Strength * (-0.0000119) + 0.06348`
 - SOSRampup must stay at 2.5 -- higher values (8.5) enable tap passes but break flipper timing
-- Upper flippers: typically 2400-2500, lower than main flippers
+- Upper flippers: typically lower strength than main flippers
 
 Select the **AddPt polarity/velocity curve set** matching the table's era. Curves are NOT universal. When shot angles feel wrong (too much backhand), try a different era's polarity curve.
 
@@ -102,9 +102,9 @@ Without PolarityCorrect in drain_hit, multiball drain causes flipper trigger unh
 
 | Type | Collection | Material | Elasticity | Falloff | Friction | Scatter |
 |------|-----------|----------|------------|---------|----------|---------|
-| Posts (bare) | dPosts | z_col_rubberposts | 0.9 | 0.1 | 0.2 | 0 |
-| Sleeves | dSleeves | z_col_rubberpostsleeves | 0.765 | 0.1 | 0.2 | 0 |
-| Bands | (none) | z_col_rubberbands | 0.85 | 0.1 | 0.2 | 0 |
+| Posts (bare) | dPosts | z_col_rubberposts | 0.9 | 0.1 | 0.3 | 1 |
+| Sleeves | dSleeves | z_col_rubberpostsleeves | 0.765 | 0.1 | 0.3 | 1 |
+| Bands | (none) | z_col_rubberbands | 0.85 | 0.13 | 0.3 | 0 |
 
 - **dPosts**: invisible collidable cylinders where rubber wraps around bare posts. Collection applies dampening on contact
 - **dSleeves**: same as dPosts but with more damping (less bouncy). Sleeves should be ~20x20x20 VP units (real sleeve measurement). Oversized sleeves make the table too hard
@@ -208,7 +208,7 @@ All three velocity components (x, y, z) of both balls must be dampened.
 | BallSize | 50 | Not legacy 25 |
 | Playfield friction | 0.15-0.25 | Default 0.02 is far too low |
 | Min friction (any surface) | 0.1 | Zero friction causes unpredictable behavior |
-| Bumper strength | 13-15 | Default is too weak. Radius = rubber skirt, not cap |
+| Bumper force | 9.5-10.5 | Threshold 1.6-2.0. Radius = rubber skirt, not cap |
 
 ## Anti-Patterns
 
